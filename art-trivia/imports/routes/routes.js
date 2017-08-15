@@ -11,8 +11,8 @@ import NotFound from "../ui/NotFound";
 
 
 
-const authenticatedPages = ['/', '/games'];
-const unauthenticatedPages = ['/login', '/signup'];
+const authenticatedPages = ['/games'];
+const unauthenticatedPages = ['/login', '/signup', '/'];
 
 const onEnterPublicPage = () => {
   if(Meteor.userId()) {
@@ -42,7 +42,7 @@ export const routes = (
     <Route path="/login" component={Login} onEnter={onEnterPublicPage}/>
     <Route path="/signup" component={Signup} onEnter={onEnterPublicPage}/>
     <Route path="/games" component={Games} onEnter={onEnterPrivatePage}/>
-    <Route path="/" component={Home}/>
+    <Route path="/" component={Home} onEnter={onEnterPublicPage}/>
     <Route path="*" component={NotFound}/>
   </Router>
 );
